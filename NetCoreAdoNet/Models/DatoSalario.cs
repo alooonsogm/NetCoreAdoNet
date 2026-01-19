@@ -6,8 +6,8 @@ namespace NetCoreAdoNet.Models
 {
     public class DatoSalario
     {
-        public string SumaSalarios { get; set; }
-        public string MediaSalarios { get; set; }
-        public string MaxSalario { get; set; }
+        public int SumaSalarios { get; set; }
+        public int MediaSalarios { get; set; }
+        public int MaxSalario { get; set; }
     }
 }

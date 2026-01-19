@@ -81,11 +81,11 @@ namespace NetCoreAdoNet.Repositories
             this.com.CommandText = sql;
             await this.cn.OpenAsync();
             this.reader = await this.com.ExecuteReaderAsync();
-            await this.reader.ReadAsync();
             DatoSalario dato = new DatoSalario();
-            dato.SumaSalarios = this.reader["Suma"].ToString();
-            dato.MediaSalarios = this.reader["Media"].ToString();
-            dato.MaxSalario = this.reader["Maximo"].ToString();
+            await this.reader.ReadAsync();
+            dato.SumaSalarios = int.Parse(this.reader["Suma"].ToString());
+            dato.MediaSalarios = int.Parse(this.reader["Media"].ToString());
+            dato.MaxSalario = int.Parse(this.reader["Maximo"].ToString());
             await this.cn.CloseAsync();
             await this.reader.CloseAsync();
             this.com.Parameters.Clear();

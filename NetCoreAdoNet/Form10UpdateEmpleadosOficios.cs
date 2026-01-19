@@ -46,9 +46,9 @@ namespace NetCoreAdoNet
                 }
 
                 DatoSalario datos = await this.repo.GetDatosSalarioByOficioAsync(oficio);
-                this.lblSumaSalarial.Text = "La suma salarial de " + oficio + " es " + datos.SumaSalarios;
-                this.lblMediaSalarial.Text = "La media salarial de " + oficio + " es " + datos.MediaSalarios;
-                this.lblMaximoSalario.Text = "El maximo salario de " + oficio + " es " + datos.MaxSalario;
+                this.lblSumaSalarial.Text = "La suma salarial de " + oficio + " es " + datos.SumaSalarios.ToString();
+                this.lblMediaSalarial.Text = "La media salarial de " + oficio + " es " + datos.MediaSalarios.ToString();
+                this.lblMaximoSalario.Text = "El maximo salario de " + oficio + " es " + datos.MaxSalario.ToString();
             }
         }
 
@@ -58,6 +58,11 @@ namespace NetCoreAdoNet
             string oficio = this.lstOficios.SelectedItem.ToString();
             int registros = await this.repo.UpdateSalarioEmpleadosAsync(oficio, incremento);
             MessageBox.Show("Registros afectados: " + registros);
+
+            DatoSalario datos = await this.repo.GetDatosSalarioByOficioAsync(oficio);
+            this.lblSumaSalarial.Text = "La suma salarial de " + oficio + " es " + datos.SumaSalarios.ToString();
+            this.lblMediaSalarial.Text = "La media salarial de " + oficio + " es " + datos.MediaSalarios.ToString();
+            this.lblMaximoSalario.Text = "El maximo salario de " + oficio + " es " + datos.MaxSalario.ToString();
         }
     }
 }
